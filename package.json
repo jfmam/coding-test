@@ -1,0 +1,8 @@
+{
+  "name": "algo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jfmam/algo.git",
+  "author": "jfmam <jfmam@naver.com>",
+  "license": "MIT"
+}
