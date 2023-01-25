@@ -35,9 +35,7 @@ const makeMatrix = (row) => {
     return mat;
 }
 
-const solution = (n,m,pair) => {
-    const areFriends = makeMatrix(n);
-  
+const makePair = (pair) => {
     let temp = 0;
     pair.forEach((v, idx) => {
         if(!(idx % 2)){
@@ -48,19 +46,31 @@ const solution = (n,m,pair) => {
             areFriends[v][temp] = true;
         }
     });
+
+    return pair;
+}
+
+const findFirst = () => {
+    let firstFree = -1;
+    for(let i = 0; i<n;i++) {
+        if(!taken[i]) {
+                // 짝을 만들지 않은 학생들 중 가장 번호가 빠른 것찾기
+            firstFree = i;
+            break;
+        }
+    }
+    return firstFree;
+}
+
+const solution = (n,m,pair) => {
+    const areFriends = makeMatrix(n);
+    makePair(pair);
     
     const countParings = (taken) => {
-        let firstFree = -1;
-        for(let i = 0; i<n;i++) {
-            if(!taken[i]) {
-                // 짝을 만들지 않은 학생들 중 가장 번호가 빠른 것찾기
-                firstFree = i;
-                break;
-            }
-        }
+        let firstFree = findFirst();
   
         // 기저사례: 모든학생이 짝을 찾았을 경우 1을반환한다.
-        if(firstFree == -1) {
+        if(firstFree === -1) {
             return 1;
         }
 
