@@ -1,20 +1,10 @@
-from math import sqrt
-import sys
+x, y = map(int, input().split())
 
-input = sys.stdin.readline
-m,n = map(int, input().split())
-
-
-a = {}
-for i in range(m,n+1):
-    a[i] = True
-
-for i in range(m, int(sqrt(n)) + 1): # n의 제곱근까지만 해도 된다
-    if a[i] == True:
-        j = 2
-        while i * j <= n:
-            a[i*j] = False
-            j+=1
-for i in range(m,n+1):
-    if a[i]:
+for i in range(x, y+1):
+    if i == 1:  # 1은 소수가 아뉘지!
+        continue
+    for j in range(2, int(i ** 0.5)+1): # 지워야할 범위는 제곱근으로 해도된다. 어차피 나누어 떨어지는 것은 약수이기 떄문에 제외됨으로
+        if i % j == 0:
+            break
+    else:
         print(i)
