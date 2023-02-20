@@ -33,29 +33,33 @@ def biteFish(x, y, shark_size):
             xx = a + i[0]
             yy = b + i[1]
             if 0 <= xx < n and 0 <= yy < n and visited[xx][yy] == 0:
-                if board[xx][yy] <= shark_size:
-                    q.append((xx, yy))
+                # 이동을 위한 조건문 작성
+                if board[xx][yy] <= shark_size: # 같은 물고기 칸은 지나 갈 수 있다.
+                    q.append((xx, yy)) 
                     visited[xx][yy] = 1
                     dis[xx][yy] = dis[a][b] + 1
+                    # 먹이가 조건에 만족할 경우 잡아먹을 수 있는 것 저장하기
                     if board[xx][yy] < shark_size and board[xx][yy] != 0:
                         temp.append((xx, yy, dis[xx][yy]))
                         
     return sorted(temp, key=lambda x: (-x[2], -x[0], -x[1]))
 res = 0
 while 1:
-    shark = biteFish(x,y,size)
+    shark = biteFish(x,y,size) #
     
     # 더 이상 먹을게 없을 때 break
     if len(shark) == 0:
         break
     
-    
+  
     xx,yy,dis = shark.pop()
     # 움직인 칸 수 더해주기
     res += dis
+    
+    # 먹이가 없어졌음으로 초기화
     board[xx][yy],board[x][y] = 0,0
     
-    # 상어 좌표 옮기기
+    # 상어 좌표
     x,y = xx,yy
     cnt += 1
     if cnt == size:
