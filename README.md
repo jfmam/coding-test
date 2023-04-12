@@ -1,4 +1,6 @@
-# 코딩테스트 알고리즘 정리하기
-- 사용 언어
-    - 파이썬
-- 
+# 알고리즘 코딩테스트
+## lang
+python
+## desc
+- solved ac level1 ~ 문제풀이 정리
+- programmers ~
