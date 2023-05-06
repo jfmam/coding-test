@@ -2,22 +2,23 @@ import sys
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
-ch = [0] * (n+1)
-a = list(map(int, input().split()))
-if len(a) != 1:
-    a.pop(0)
-    for i in a:
-        ch[i] += 1
+knowList = set(input().split()[1:])
+parties = []
 
-
-b = []
 for _ in range(m):
-    b = list(map(int, input().split()))
-    b.pop(0)
-    for j in b:
-        ch[j] += 1
+    parties.append(set(input().split()[1:]))
+
+# knowlist를 모두 구한다음
 cnt = 0
-for i in range(n+1):
-    if ch[i] == 1:
-       cnt += 1
+for _ in range(m):
+    for party in parties:
+        if party & knowList:
+            knowList = knowList.union(party)
+
+# know리스트에 없는 파티만 구한다.
+for party in parties:
+    if party & knowList:
+        continue
+    cnt += 1
+
 print(cnt)
