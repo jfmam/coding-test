@@ -1,31 +1,18 @@
 import sys
-from collections import deque
+from itertools import combinations
+from collections import defaultdict
+
 input = sys.stdin.readline
 
-n,m = map(int, input().split())
-board = []
-ch = [[0] * n for _ in range(m)]
-move = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-for i in range(m):
-    temp = []
-    a = input().rstrip()
-    for j in range(len(a)):
-        temp.append(int(a[j]))
-    board.append(temp)
-q = deque([(0, 0, 0)])
+t = int(input())
+n = int(input())
+a = list(map(int, input().split()))
+m = int(input())
+b = list(map(int, input().split()))
+answer = 0
+sa = defaultdict(int) # defaultdict 개념
+sb = defaultdict(int)
 
-while q:
-    x, y, cnt = q.popleft()
-    if x == m-1 and y == n-1:
-        print(cnt)
-        break
-    for i in move:
-        ii = x + i[0]
-        jj = y + i[1]
-        if 0 <= ii < m and 0 <= jj < n:
-            if ch[ii][jj] == 0:
-                ch[ii][jj] = 1
-                if board[ii][jj] == 0:
-                    q.appendleft((ii, jj, cnt))
-                else:
-                    q.append((ii, jj, cnt+1))
+for i in range(1,n+1): # 부배열의 합을 구하는 로직
+    for j in list(combinations(a,i)):
+        print(j)
