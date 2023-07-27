@@ -2,5 +2,6 @@
 ## lang
 python
 ## desc
-- solved ac level1 ~ 문제풀이 정리
+- solved ac level1 ~ level3
 - programmers ~
+- code plus
