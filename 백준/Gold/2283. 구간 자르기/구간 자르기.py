@@ -14,7 +14,7 @@ for _ in range(n):
 s,e = 0,0
 Sum = 0
 answer = [0,0]
-while s <= e and e < 1000001: #
+while s <= e and e <= max_len: #
     if Sum == k:
         answer = [s,e]
         break
