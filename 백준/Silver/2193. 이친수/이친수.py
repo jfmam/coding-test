@@ -1,15 +1,13 @@
-import sys
-input = sys.stdin.readline
-
 n = int(input())
 
-# n 자리 수 만큼 dp 테이블 생성 => n+1
-dp = [0] * (n + 1)
-dp[1] = 1
+d = [[0] * 2 for _ in range(91)]
+d[1][0],d[1][1] = 0,1
+d[2][0],d[2][1] = 1,0
 
-# dp 점화식
-# 경우의 수를 따져보면 피보나치 수열과 비슷한 형태를 띄고 있음
-for i in range(2, n+1):
-    dp[i] = dp[i-2] + dp[i-1]
-
-print(dp[n])
+if n <= 2:
+    print(1)
+else:
+    for i in range(3, n+1):
+        d[i][0] = d[i-1][0] + d[i-2][0]
+        d[i][1] = d[i-1][1] + d[i-2][1]
+    print(sum(d[n]))
