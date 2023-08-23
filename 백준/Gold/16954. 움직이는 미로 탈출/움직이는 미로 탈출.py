@@ -14,7 +14,8 @@ def bfs():
     q = deque([(7, 0)]) # i, j
     move = [[0, 0], [1, 0], [-1, 0], [0, -1], [0, 1], [-1, -1], [-1, 1], [1, -1], [1, 1]] # 제자리에 있을 수있다.
     while q:
-        for _ in range(len(q)):
+        q_len = len(q)
+        for _ in range(q_len):
             i, j = q.popleft()
 
             if [i,j] in wall:
