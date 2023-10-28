@@ -2,18 +2,19 @@ import sys
 input = sys.stdin.readline
 n,m = map(int, input().split())
 
+ch = [0] * 9
 answer = []
-ch = [0] * (n+1)
-def dfs(L, st, selected):
-    if L == m:
-        a = " ".join(map(str, selected[:]))
-        answer.append(a)
+def dfs(level, st, selected):
+    if level == m:
+        answer.append(" ".join(map(str, selected[:])))
         return
-    for i in range(st+1,n+1):
-        if i not in selected:
-            selected.append(i)
-            dfs(L+1, i, selected)
-            selected.pop()
-dfs(0,0, [])
-
+    else:
+        for i in range(st, n+1):
+            if ch[i] == 0:
+                ch[i] = 1
+                selected.append(i)
+                dfs(level+1, i+1, selected)
+                selected.pop()
+                ch[i] = 0
+dfs(0,1,[])
 print(*answer, sep="\n")
