@@ -1,43 +1,33 @@
 import sys
 input = sys.stdin.readline
+
 n = int(input())
+a = {} # 결국 객체에 current, left child, right child를 저장
 
-inputs = []
 for _ in range(n):
-    inputs.append(input().split())
+    item,left,right = input().split()
+    a[item] = [item,left,right]
 
-class Node():
-    def __init__(self, item, left, right):
-        self.item = item
-        self.left = left
-        self.right = right
-
-def preorder(node):
-    print(node.item, end = '')
-    if node.left != '.':
-        preorder(tree[node.left])
-    if node.right != '.':
-        preorder(tree[node.right])
-        
-def inorder(node):
-    if node.left != '.':
-        inorder(tree[node.left])
-    print(node.item, end = '')
-    if node.right != '.':
-        inorder(tree[node.right])
-        
-def postorder(node):
-    if node.left != '.':
-        postorder(tree[node.left])
-    if node.right != '.':
-        postorder(tree[node.right])
-    print(node.item, end = '')
-
-tree = {}
-for item, left, right in inputs:
-    tree[item] = Node(item, left, right)
-preorder(tree['A'])
+def preorder(current):
+    print(a[current][0],end='')
+    if a[current][1] != '.':
+        preorder(a[current][1])
+    if a[current][2] != '.':
+        preorder(a[current][2])
+def inorder(current):
+    if a[current][1] != '.':
+        inorder(a[current][1])
+    print(a[current][0],end='')
+    if a[current][2] != '.':
+        inorder(a[current][2])
+def postorder(current):
+    if a[current][1] != '.':
+        postorder(a[current][1])
+    if a[current][2] != '.':
+        postorder(a[current][2])
+    print(a[current][0],end='')
+preorder('A')
 print()
-inorder(tree['A'])
+inorder('A')
 print()
-postorder(tree['A'])
+postorder('A')
