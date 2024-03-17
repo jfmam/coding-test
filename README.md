@@ -3,7 +3,7 @@
 python
 ## desc
 - solved ac level1 ~ level3
-- programmers ~
+- programmers t
 - code plus
 
-slack test 
+slack test resolve conflictgit
