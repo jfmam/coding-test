@@ -6,4 +6,4 @@ python
 - programmers ~
 - code plus
 
-slack test in pull reqeust notification
+slack test in pull
