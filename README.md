@@ -6,4 +6,4 @@ python
 - programmers t
 - code plus
 
-slack test resolve conflictgit
+slack test resolve conflictgit modify 3
