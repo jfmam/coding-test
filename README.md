@@ -6,5 +6,5 @@ python
 - programmers ~
 - code plus
 
-git progress + main
+git merge 1
 
