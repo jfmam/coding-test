@@ -6,4 +6,4 @@ python
 - programmers ~
 - code plus
 
-slack notification
+conflict
