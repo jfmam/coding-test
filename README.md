@@ -6,5 +6,5 @@ python
 - programmers ~
 - code plus
 
-git merge conflict
+git merge 1
 
